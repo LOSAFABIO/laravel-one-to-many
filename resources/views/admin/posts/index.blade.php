@@ -12,6 +12,7 @@
         <th scope="col">Data_post</th>
         <th scope="col">Autore</th>
         <th scope="col">Slug</th>
+        <th scope="col">Categoria</th>
         <th scope="col">Mostra</th>
         <th scope="col">Modifica</th>
         <th scope="col">Elimina</th>
@@ -26,6 +27,7 @@
           <td>{{$elemento->post_date}}</th>
           <td>{{$elemento->author}}</th>
           <td>{{$elemento->slug}}</th>
+          <td>{{$elemento->category? $post->category->name : '-'}}</th>
           <td>
             <a href="{{route("admin.posts.show", $elemento->id)}}"><button type="button" class="btn btn-primary">Mostra</button></a>
           </th>

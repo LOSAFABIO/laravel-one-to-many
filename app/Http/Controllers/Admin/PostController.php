@@ -6,12 +6,21 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Str;
 
+use App\Category;
+
 use App\Post;   
 
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+    protected $validation = [
+        'title' => 'required|max:255',
+        'content' => 'required',
+        'category_id' => 'nullable|exsist:categories_id'
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -84,7 +93,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+
+        return view('admin.posts.edit', compact('post','categories'));
     }
 
     /**

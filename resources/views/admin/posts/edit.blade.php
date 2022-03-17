@@ -9,29 +9,44 @@
         @method('PUT')
         <div class="form-group">
             <label for="title">Titolo</label>
-            <input type="text" class="form-control" id="title" aria-describedby="title" name="title" placeholder="Inserisci titolo" value="{{$post->title}}">
+            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" aria-describedby="title" name="title" placeholder="Inserisci titolo" value="{{$post->title}}">
             @error('title')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
         <div class="form-group">
             <label for="content">Contenuto</label>
-            <textarea class="form-control" id="content" name="content" rows="3">{{$post->content}}</textarea>
+            <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="3">{{$post->content}}</textarea>
             @error('content')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
         <div class="form-group">
             <label for="post_date">Data_post</label>
-            <input type="date" class="form-control-file" id="post_date" name="post_date" value="{{$post->post_date}}">
+            <input type="date" class="form-control-file @error('post_date') is-invalid @enderror" id="post_date" name="post_date" value="{{$post->post_date}}">
             @error('post_date')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
         <div class="form-group">
             <label for="author">Autore</label>
-            <input type="text" class="form-control" id="author" aria-describedby="price" name="author" placeholder="Inserisci autore" value="{{$post->author}}">
+            <input type="text" class="form-control @error('author') is-invalid @enderror" id="author" aria-describedby="price" name="author" placeholder="Inserisci autore" value="{{$post->author}}">
             @error('author')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="form-group">
+            <label for="category">Categoria</label>
+            <select name="category_id" class="form-control @error('category_id') is-invalid @enderror">
+                <option value="">-- seleziona una categoria --</option>
+                @foreach($categories as $category)
+                <option value="{{ $category->id }}"
+                    {{-- {{$category->id == old('category_id', $post->category_id) ? 'selected' : '' }} --}} >
+                    {{$category->name}}
+                </option>
+                @endforeach
+            </select>
+            @error('category_id')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
