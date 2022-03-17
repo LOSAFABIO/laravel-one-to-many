@@ -1,0 +1,23 @@
+<?php
+use Illuminate\Support\Str;
+
+use Illuminate\Database\Seeder;
+
+class CategoriesTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $categories = ['musica','cibo','animali','sport'];
+        foreach ($categories as $value) {
+            $new_category = new Category();
+            $new_category->name = $category_name;
+            $new_category->slug = Str::of($category_name)->slug('-');
+            $new_category->save();
+        }
+    }
+}
