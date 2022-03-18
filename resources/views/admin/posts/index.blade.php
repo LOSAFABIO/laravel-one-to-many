@@ -27,7 +27,7 @@
           <td>{{$elemento->post_date}}</th>
           <td>{{$elemento->author}}</th>
           <td>{{$elemento->slug}}</th>
-          <td>{{$elemento->category? $post->category->name : '-'}}</th>
+          <td>{{$elemento->category? $elemento->category->name : '-'}}</th>
           <td>
             <a href="{{route("admin.posts.show", $elemento->id)}}"><button type="button" class="btn btn-primary">Mostra</button></a>
           </th>

@@ -34,6 +34,21 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
+        <div class="form-group">
+            <label for="category">Categoria</label>
+            <select name="category_id" class="form-control @error('category_id') is-invalid @enderror">
+                <option value="">-- seleziona una categoria --</option>
+                @foreach($categories as $category)
+                <option value="{{ $category->id }}"
+                    {{$category->id == old('category_id') ? 'selected' : '-' }} >
+                    {{$category->name}}
+                </option>
+                @endforeach
+            </select>
+            @error('category_id')   
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
         <a href="{{route("admin.posts.index")}}">
             <button type="button" class="btn btn-primary">Torna indietro</button>
         </a>

@@ -14,7 +14,7 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $categories = ['musica','cibo','animali','sport'];
+        $categories = ['Musica','Cibo','Animali','Sport'];
 
         foreach ($categories as $category_name) {
             $new_category = new Category();

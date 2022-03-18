@@ -39,7 +39,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::all();
+
+        return view('admin.posts.create',compact('categories'));
     }
 
     /**
@@ -55,7 +57,8 @@ class PostController extends Controller
             "content"=>"required|string|max:255",
             "post_date"=>"required",
             "author"=>"required",
-            "slug"=>"nullable"
+            "slug"=>"nullable",
+            "category_id"=>"nullable"
         ]);
 
         $slugTmp = Str::slug($validated_data['title']);
@@ -112,6 +115,7 @@ class PostController extends Controller
             "content"=>"required|string|max:255",
             "post_date"=>"required",
             "author"=>"required",
+            "category_id"=>"nullable"
         ]);
 
         if($post->title == $validated_data['title']){
